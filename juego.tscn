@@ -1,10 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://difb0xfrwf5xf"]
+[gd_scene load_steps=6 format=3 uid="uid://difb0xfrwf5xf"]
 
 [ext_resource type="PackedScene" uid="uid://cei23mii42ah5" path="res://UI.tscn" id="1_7qkn4"]
-[ext_resource type="Texture2D" uid="uid://2a5uldomq2cd" path="res://cinta tranp1.1.jpg" id="2_ucsok"]
-[ext_resource type="Texture2D" uid="uid://dnsti460iu2ke" path="res://cinta tranp1.2.jpg" id="3_awqwn"]
-[ext_resource type="Texture2D" uid="uid://d2t4umtkpsff6" path="res://cinta tranp1.3.jpg" id="4_wv3ue"]
-[ext_resource type="Texture2D" uid="uid://ije784qfqxbs" path="res://cinta tranp1.4.jpg" id="5_rjngf"]
 [ext_resource type="PackedScene" uid="uid://5jswlyu8v1ps" path="res://Fruitsok.tscn" id="6_tuqwn"]
 
 [sub_resource type="GDScript" id="GDScript_rfos1"]
@@ -85,16 +81,16 @@ point_count = 5
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_ucsok")
+"texture": null
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_awqwn")
+"texture": null
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_wv3ue")
+"texture": null
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_rjngf")
+"texture": null
 }],
 "loop": true,
 "name": &"animation",
