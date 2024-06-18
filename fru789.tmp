@@ -1,0 +1,70 @@
+[gd_scene load_steps=12 format=3 uid="uid://3seluvjklkhx"]
+
+[ext_resource type="Script" path="res://frutasR.gd" id="1_2p6d0"]
+[ext_resource type="Texture2D" uid="uid://dgho5kh5pxinj" path="res://frutas/MznV.png" id="2_pvhom"]
+[ext_resource type="Texture2D" uid="uid://ty5anha5ae5c" path="res://frutas/mznR.png" id="3_yhipe"]
+[ext_resource type="Texture2D" uid="uid://dffdqih3qnrok" path="res://frutas/PeraV.png" id="4_trs2u"]
+[ext_resource type="Texture2D" uid="uid://5vermmf1gglr" path="res://frutas/bnn.png" id="5_7aohc"]
+[ext_resource type="Texture2D" uid="uid://cbm0b7txu7qgc" path="res://frutas/CrZ2.png" id="6_tf72o"]
+[ext_resource type="Texture2D" uid="uid://cjd80ldmpo5oh" path="res://frutas/CrZ.png" id="7_fpf5h"]
+[ext_resource type="Texture2D" uid="uid://6tpwdi7ybqa3" path="res://frutas/Drzn.png" id="8_o2dyb"]
+[ext_resource type="Texture2D" uid="uid://dtbd3sifv7454" path="res://frutas/uvaM.png" id="9_vhno8"]
+[ext_resource type="Texture2D" uid="uid://cmigb0thuwnyw" path="res://frutas/uvaV.png" id="10_72hbi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y6k7l"]
+
+[node name="fruit1" type="Node2D"]
+position = Vector2(130, 71)
+script = ExtResource("1_2p6d0")
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+shape = SubResource("CircleShape2D_y6k7l")
+
+[node name="MznV" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture = ExtResource("2_pvhom")
+
+[node name="MznR" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture = ExtResource("3_yhipe")
+
+[node name="PraV" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture = ExtResource("4_trs2u")
+
+[node name="Bnn" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture = ExtResource("5_7aohc")
+
+[node name="CrZ2" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture = ExtResource("6_tf72o")
+
+[node name="CrZ" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture = ExtResource("7_fpf5h")
+
+[node name="Drzn" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture = ExtResource("8_o2dyb")
+
+[node name="UvaM" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture = ExtResource("9_vhno8")
+
+[node name="UvaV" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture = ExtResource("10_72hbi")

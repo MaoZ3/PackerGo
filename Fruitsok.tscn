@@ -1,0 +1,187 @@
+[gd_scene load_steps=22 format=3 uid="uid://5jswlyu8v1ps"]
+
+[ext_resource type="Texture2D" uid="uid://5vermmf1gglr" path="res://frutas/bnn.png" id="1_jc565"]
+[ext_resource type="Texture2D" uid="uid://cjd80ldmpo5oh" path="res://frutas/CrZ.png" id="2_yknxs"]
+[ext_resource type="Texture2D" uid="uid://cbm0b7txu7qgc" path="res://frutas/CrZ2.png" id="3_ila78"]
+[ext_resource type="Texture2D" uid="uid://6tpwdi7ybqa3" path="res://frutas/Drzn.png" id="4_e5m4n"]
+[ext_resource type="Texture2D" uid="uid://ty5anha5ae5c" path="res://frutas/mznR.png" id="5_cguu3"]
+[ext_resource type="Texture2D" uid="uid://dgho5kh5pxinj" path="res://frutas/MznV.png" id="6_uftu3"]
+[ext_resource type="Texture2D" uid="uid://dffdqih3qnrok" path="res://frutas/PeraV.png" id="7_di3ct"]
+[ext_resource type="Texture2D" uid="uid://dtbd3sifv7454" path="res://frutas/uvaM.png" id="8_31x6p"]
+[ext_resource type="Texture2D" uid="uid://cmigb0thuwnyw" path="res://frutas/uvaV.png" id="9_hbgt4"]
+
+[sub_resource type="GDScript" id="GDScript_4cmnw"]
+script/source = "extends RigidBody2D
+
+func _ready():
+	var fruit = $AnimatedSprite2D.sprite_frames.get_animation_names()
+	# Generate a random number
+	var random_index = randi() % fruit.size()
+
+	# Ensure the random number is not 6
+	while random_index == 9:
+		random_index = randi() % fruit.size()
+
+	# Play the animation using the generated index
+	$AnimatedSprite2D.play(fruit[random_index])
+	#print(fruit[random_index])
+
+	# Asignar una rotación aleatoria
+	randomize()  # Asegurarse de que el generador de números aleatorios esté inicializado
+	rotation = randf_range(0, 2 * PI)  # Asignar una rotación aleatoria en radianes
+	# Called every frame. 'delta' is the elapsed time since the previous frame.
+	
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	queue_free()
+	
+
+func _input(input_event):
+	if input_event is InputEventMouseButton and input_event.is_action_pressed(\"click\"):
+		var current_animation = $AnimatedSprite2D.animation
+		print(current_animation)
+		
+	
+
+func _on_mouse_entered():
+	pass # Replace with function body.
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lcnen"]
+radius = 10.0499
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88c7l"]
+atlas = ExtResource("1_jc565")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7edi"]
+atlas = ExtResource("2_yknxs")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rj8yv"]
+atlas = ExtResource("3_ila78")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_plydm"]
+atlas = ExtResource("4_e5m4n")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fu4bp"]
+atlas = ExtResource("5_cguu3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3kp7"]
+atlas = ExtResource("6_uftu3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sy5xt"]
+atlas = ExtResource("7_di3ct")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqcws"]
+atlas = ExtResource("8_31x6p")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kraec"]
+atlas = ExtResource("9_hbgt4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4cuvl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88c7l")
+}],
+"loop": true,
+"name": &"Bnn",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7edi")
+}],
+"loop": true,
+"name": &"CrZ",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rj8yv")
+}],
+"loop": true,
+"name": &"CrZ2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_plydm")
+}],
+"loop": true,
+"name": &"Drzn",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fu4bp")
+}],
+"loop": true,
+"name": &"MznR",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3kp7")
+}],
+"loop": true,
+"name": &"MznV",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sy5xt")
+}],
+"loop": true,
+"name": &"PraV",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqcws")
+}],
+"loop": true,
+"name": &"UvaM",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kraec")
+}],
+"loop": false,
+"name": &"UvaV",
+"speed": 5.0
+}]
+
+[node name="fruits" type="RigidBody2D"]
+top_level = true
+input_pickable = true
+mass = 0.01
+gravity_scale = 0.0
+script = SubResource("GDScript_4cmnw")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+texture_filter = 1
+shape = SubResource("CircleShape2D_lcnen")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -2)
+scale = Vector2(1.45028, 1.45028)
+sprite_frames = SubResource("SpriteFrames_4cuvl")
+animation = &"Bnn"
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
