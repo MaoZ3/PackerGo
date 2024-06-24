@@ -6,69 +6,40 @@
 [sub_resource type="GDScript" id="GDScript_rfos1"]
 script/source = "extends Node
 
-#var velocity = 100
-
 func _ready():
-	$AnimatedSprite2D.play(\"animation\")
 	$FruitTimer.start()
-	pass
-
-# Se llama en cada fotograma. 'delta' es el tiempo transcurrido desde el fotograma anterior.
-func _process(delta):
-	#fruit.position.x += Velocidad * delta
-	pass
+	#$\".\".connect(\"input_event\", Callable(self, \"_on_fruits_input_event\"))
 
 # Función para manejar el spawn de la fruta
 func _on_fruit_timer_timeout():
-	var fruit = preload(\"res://Fruitsok.tscn\").instantiate()
+	var fruit_scene = preload(\"res://Fruitsok.tscn\")
+	var fruit_instance = fruit_scene.instantiate()
+
+	# Obtener la ubicación de spawn
 	var fruit_spawn_location = $Path2D/PathFollow2D
-	fruit_spawn_location.progress_ratio = randf()
-	fruit.position = fruit_spawn_location.position
+	fruit_spawn_location.progress_ratio = randf()  # Establecer una posición aleatoria en el Path2D
+	fruit_instance.position = fruit_spawn_location.position
 
+	# Asignar una velocidad inicial aleatoria a la fruta
 	var velocity = Vector2(randf_range(50, 60), 0.0)
-	fruit.linear_velocity = velocity
-	
-	add_child(fruit)
-	
+	fruit_instance.linear_velocity = velocity
 
-
-func _on_fruits_mouse_entered():
-	print(\"papi\")
+	add_child(fruit_instance)
 	
 
-\"\"\" extends Node2D
+func _on_fruits_input_event(viewport, event, _shape_idx):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		var clicked_fruit = viewport.get_node_at_position(event.position)
+		if clicked_fruit and clicked_fruit.has_method(\"print_animation_name\"):
+			clicked_fruit.print_animation_name()
+		
+	
 
-@onready var frutas = $fruit1
-
-var spawn_timer = 2  # Tiempo en segundos para el spawn de la fruta
-var spawn_interval = 2  # Intervalo de tiempo entre spawns
-
-# Se llama cuando el nodo entra en el árbol de escena por primera vez.
-func _ready():
-	var spawn = Timer.new()
-	spawn.wait_time = spawn_timer
-	spawn.connect(\"timeout\", self, \"_on_spawn_timeout\")
-	add_child(spawn)
-	spawn.start()
-
-# Se llama en cada fotograma. 'delta' es el tiempo transcurrido desde el fotograma anterior.
-func _process(delta):
-	frutas.position.x += Velocidad * delta
-
-# Función para manejar el spawn de la fruta
-func _on_spawn_timeout():
-	# Crear una nueva instancia de la fruta (reemplaza con tu lógica específica)
-	var new_fruit = frutas.duplicate()
-	add_child(new_fruit)
-
-	# Reiniciar el temporizador de spawn
-	var spawn = get_node(\"Timer\")  # Asegúrate de que el nodo Timer tenga el nombre correcto en tu escena
-	spawn.wait_time = spawn_interval
-	spawn.start()\"\"\"
+ 
 
 
-
-
+\"\"\"
+\"\"\"
 "
 
 [sub_resource type="Curve2D" id="Curve2D_hsh5a"]
@@ -136,7 +107,6 @@ animation = &"animation"
 frame_progress = 0.375902
 
 [node name="fruits" parent="." instance=ExtResource("6_tuqwn")]
-position = Vector2(-48, 761)
 
 [connection signal="timeout" from="FruitTimer" to="." method="_on_fruit_timer_timeout"]
-[connection signal="mouse_entered" from="fruits" to="." method="_on_fruits_mouse_entered"]
+[connection signal="input_event" from="fruits" to="." method="_on_fruits_input_event"]

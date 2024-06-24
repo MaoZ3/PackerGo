@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://babe4ebkmp2bh"
-path="res://.godot/imported/grnd.png-0399e430290e6153ad3b3cdbdb2661ec.ctex"
+path="res://.godot/imported/grnd.png-257fc3653d59dee44b66c68b1f9def5f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://grnd.png"
-dest_files=["res://.godot/imported/grnd.png-0399e430290e6153ad3b3cdbdb2661ec.ctex"]
+source_file="res://frutas/grnd.png"
+dest_files=["res://.godot/imported/grnd.png-257fc3653d59dee44b66c68b1f9def5f.ctex"]
 
 [params]
 

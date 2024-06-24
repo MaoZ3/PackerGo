@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://buj0d4r5ulr5m"
-path="res://.godot/imported/anna.png-e8734d57624a871e9392019a5c827bee.ctex"
+uid="uid://d0ptaxrbq6ybn"
+path="res://.godot/imported/mznD2.png-b10439546b20089ca6203d3452d7a1fe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://anna.png"
-dest_files=["res://.godot/imported/anna.png-e8734d57624a871e9392019a5c827bee.ctex"]
+source_file="res://frutas/mznD2.png"
+dest_files=["res://.godot/imported/mznD2.png-b10439546b20089ca6203d3452d7a1fe.ctex"]
 
 [params]
 

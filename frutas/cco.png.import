@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cpuhxeb5aia6"
-path="res://.godot/imported/cco.png-06ff4af729612f4109bb04f8423a4359.ctex"
+path="res://.godot/imported/cco.png-acd6c4f4336f90bd0d94f5fcda85f26b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://cco.png"
-dest_files=["res://.godot/imported/cco.png-06ff4af729612f4109bb04f8423a4359.ctex"]
+source_file="res://frutas/cco.png"
+dest_files=["res://.godot/imported/cco.png-acd6c4f4336f90bd0d94f5fcda85f26b.ctex"]
 
 [params]
 

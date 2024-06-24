@@ -1,57 +1,81 @@
-[gd_scene load_steps=22 format=3 uid="uid://5jswlyu8v1ps"]
+[gd_scene load_steps=34 format=3 uid="uid://5jswlyu8v1ps"]
 
 [ext_resource type="Texture2D" uid="uid://5vermmf1gglr" path="res://frutas/bnn.png" id="1_jc565"]
+[ext_resource type="Texture2D" uid="uid://buj0d4r5ulr5m" path="res://frutas/anna.png" id="1_v0bd1"]
 [ext_resource type="Texture2D" uid="uid://cjd80ldmpo5oh" path="res://frutas/CrZ.png" id="2_yknxs"]
+[ext_resource type="Texture2D" uid="uid://cpuhxeb5aia6" path="res://frutas/cco.png" id="3_f2ema"]
 [ext_resource type="Texture2D" uid="uid://cbm0b7txu7qgc" path="res://frutas/CrZ2.png" id="3_ila78"]
 [ext_resource type="Texture2D" uid="uid://6tpwdi7ybqa3" path="res://frutas/Drzn.png" id="4_e5m4n"]
 [ext_resource type="Texture2D" uid="uid://ty5anha5ae5c" path="res://frutas/mznR.png" id="5_cguu3"]
 [ext_resource type="Texture2D" uid="uid://dgho5kh5pxinj" path="res://frutas/MznV.png" id="6_uftu3"]
+[ext_resource type="Texture2D" uid="uid://b2usamhyvwrkk" path="res://frutas/frt.png" id="7_882wi"]
 [ext_resource type="Texture2D" uid="uid://dffdqih3qnrok" path="res://frutas/PeraV.png" id="7_di3ct"]
 [ext_resource type="Texture2D" uid="uid://dtbd3sifv7454" path="res://frutas/uvaM.png" id="8_31x6p"]
+[ext_resource type="Texture2D" uid="uid://babe4ebkmp2bh" path="res://frutas/grnd.png" id="8_y6t6d"]
+[ext_resource type="Texture2D" uid="uid://d0ptaxrbq6ybn" path="res://frutas/mznD2.png" id="9_8jrqa"]
 [ext_resource type="Texture2D" uid="uid://cmigb0thuwnyw" path="res://frutas/uvaV.png" id="9_hbgt4"]
+[ext_resource type="Texture2D" uid="uid://dhny1lnngd0lv" path="res://frutas/nrj.png" id="12_gjr24"]
 
 [sub_resource type="GDScript" id="GDScript_4cmnw"]
 script/source = "extends RigidBody2D
 
+var current_animation
+
 func _ready():
-	var fruit = $AnimatedSprite2D.sprite_frames.get_animation_names()
-	# Generate a random number
-	var random_index = randi() % fruit.size()
+	# Obtener los nombres de las animaciones de la fruta
+	var fruit_animations = $AnimatedSprite2D.sprite_frames.get_animation_names()
 
-	# Ensure the random number is not 6
-	while random_index == 9:
-		random_index = randi() % fruit.size()
+	# Generar un índice aleatorio para seleccionar una animación
+	var random_index = randi() % fruit_animations.size()
 
-	# Play the animation using the generated index
-	$AnimatedSprite2D.play(fruit[random_index])
-	#print(fruit[random_index])
+
+	while random_index == 14:
+		random_index = randi() % fruit_animations.size()
+
+	# Reproducir la animación usando el índice generado
+	$AnimatedSprite2D.play(fruit_animations[random_index])
 
 	# Asignar una rotación aleatoria
 	randomize()  # Asegurarse de que el generador de números aleatorios esté inicializado
 	rotation = randf_range(0, 2 * PI)  # Asignar una rotación aleatoria en radianes
-	# Called every frame. 'delta' is the elapsed time since the previous frame.
-	
 
+	# Conectar la señal input_event para esta instancia	
+	connect(\"input_event\", Callable(self, \"_on_input_event\"))
+
+# Función llamada cuando el objeto sale de la pantalla
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
 	
 
-func _input(input_event):
-	if input_event is InputEventMouseButton and input_event.is_action_pressed(\"click\"):
-		var current_animation = $AnimatedSprite2D.animation
-		print(current_animation)
-		
+func _on_input_event(_viewport, event, _shape_idx):
+	if event is InputEvent and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		print_animation_name()
 	
 
-func _on_mouse_entered():
-	pass # Replace with function body.
+func print_animation_name():
+	print(\"Animation name: \" + self.current_animation)
+	
+
+func _input(event): 
+	pass
+	
+
+
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lcnen"]
 radius = 10.0499
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_53bvf"]
+atlas = ExtResource("1_v0bd1")
+region = Rect2(0, 0, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_88c7l"]
 atlas = ExtResource("1_jc565")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofpdo"]
+atlas = ExtResource("3_f2ema")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p7edi"]
@@ -66,12 +90,28 @@ region = Rect2(0, 0, 16, 16)
 atlas = ExtResource("4_e5m4n")
 region = Rect2(0, 0, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_qae8o"]
+atlas = ExtResource("7_882wi")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mf6m2"]
+atlas = ExtResource("8_y6t6d")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcev3"]
+atlas = ExtResource("9_8jrqa")
+region = Rect2(0, 0, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_fu4bp"]
 atlas = ExtResource("5_cguu3")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q3kp7"]
 atlas = ExtResource("6_uftu3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wfwh"]
+atlas = ExtResource("12_gjr24")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sy5xt"]
@@ -90,10 +130,26 @@ region = Rect2(0, 0, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_53bvf")
+}],
+"loop": true,
+"name": &"AnA",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_88c7l")
 }],
 "loop": true,
 "name": &"Bnn",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofpdo")
+}],
+"loop": true,
+"name": &"CcO",
 "speed": 5.0
 }, {
 "frames": [{
@@ -122,6 +178,30 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_qae8o")
+}],
+"loop": true,
+"name": &"FrT",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mf6m2")
+}],
+"loop": true,
+"name": &"GrnD",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcev3")
+}],
+"loop": false,
+"name": &"MznD",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_fu4bp")
 }],
 "loop": true,
@@ -134,6 +214,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"MznV",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6wfwh")
+}],
+"loop": true,
+"name": &"NrJ",
 "speed": 5.0
 }, {
 "frames": [{
@@ -179,9 +267,9 @@ texture_filter = 1
 position = Vector2(0, -2)
 scale = Vector2(1.45028, 1.45028)
 sprite_frames = SubResource("SpriteFrames_4cuvl")
-animation = &"Bnn"
+animation = &"AnA"
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

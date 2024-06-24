@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2usamhyvwrkk"
-path="res://.godot/imported/frt.png-c34a591285911a3c2dfeb084257acec8.ctex"
+uid="uid://dhny1lnngd0lv"
+path="res://.godot/imported/nrj.png-f393c9c16081c54c71f8a68af9755243.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://frt.png"
-dest_files=["res://.godot/imported/frt.png-c34a591285911a3c2dfeb084257acec8.ctex"]
+source_file="res://frutas/nrj.png"
+dest_files=["res://.godot/imported/nrj.png-f393c9c16081c54c71f8a68af9755243.ctex"]
 
 [params]
 
