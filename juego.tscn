@@ -1,6 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://difb0xfrwf5xf"]
+[gd_scene load_steps=8 format=3 uid="uid://difb0xfrwf5xf"]
 
 [ext_resource type="PackedScene" uid="uid://cei23mii42ah5" path="res://UI.tscn" id="1_7qkn4"]
+[ext_resource type="PackedScene" uid="uid://btl53v6ose267" path="res://parallax_background.tscn" id="1_qj547"]
+[ext_resource type="PackedScene" uid="uid://b8ng18mytobe5" path="res://tree.tscn" id="3_01w8b"]
+[ext_resource type="PackedScene" uid="uid://db5drlejhxrf2" path="res://hobbit.tscn" id="5_skbkr"]
 [ext_resource type="PackedScene" uid="uid://5jswlyu8v1ps" path="res://Fruitsok.tscn" id="6_tuqwn"]
 
 [sub_resource type="GDScript" id="GDScript_rfos1"]
@@ -16,60 +19,41 @@ func _on_fruit_timer_timeout():
 	var fruit_instance = fruit_scene.instantiate()
 
 	# Obtener la ubicación de spawn
-	var fruit_spawn_location = $Path2D/PathFollow2D
+	var fruit_spawn_location =$Path2D/PathFollow2D
 	fruit_spawn_location.progress_ratio = randf()  # Establecer una posición aleatoria en el Path2D
 	fruit_instance.position = fruit_spawn_location.position
 
 	# Asignar una velocidad inicial aleatoria a la fruta
-	var velocity = Vector2(randf_range(50, 60), 0.0)
-	fruit_instance.linear_velocity = velocity
+	#var velocity = Vector2(randf_range(50, 60), 0.0)
+	#fruit_instance.linear_velocity = velocity
 
 	add_child(fruit_instance)
 	
 
-func _on_fruits_input_event(viewport, event, _shape_idx):
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		var clicked_fruit = viewport.get_node_at_position(event.position)
-		if clicked_fruit and clicked_fruit.has_method(\"print_animation_name\"):
-			clicked_fruit.print_animation_name()
-		
-	
 
+
+\"\"\"func _on_fruits_input_event(_viewport, event, _shape_idx):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		var clicked_fruit = get_tree().get_nodes_in_group(\"fruits\").filter(func(fruit):
+			return fruit is RigidBody2D and fruit.get_global_mouse_position().distance_to(event.position) < 50)
+		
+		if clicked_fruit.size() > 0:
+			clicked_fruit[0].print_animation_name()
  
 
-
-\"\"\"
 \"\"\"
 "
 
-[sub_resource type="Curve2D" id="Curve2D_hsh5a"]
+[sub_resource type="Curve2D" id="Curve2D_yeod4"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -1, 758, 0, 0, 0, 0, -1, 518, 0, 0, 0, 0, -2, 759, 0, 0, 0, 0, 1, 518, 0, 0, 0, 0, -1, 758)
+"points": PackedVector2Array(0, 0, 0, 0, 24, 87, 0, 0, 0, 0, 51, 49, 0, 0, 0, 0, 85, 36, 0, 0, 0, 0, 115, 44, 0, 0, 0, 0, 134, 52, 0, 0, 0, 0, 145, 64, 0, 0, 0, 0, 152, 79, 0, 0, 0, 0, 150, 97, 0, 0, 0, 0, 141, 107, 0, 0, 0, 0, 127, 111, 0, 0, 0, 0, 117, 124, 0, 0, 0, 0, 105, 135, 0, 0, 0, 0, 98, 120, 0, 0, 0, 0, 100, 108, 0, 0, 0, 0, 92, 96, 0, 0, 0, 0, 82, 101, 0, 0, 0, 0, 78, 111, 0, 0, 0, 0, 84, 120, 0, 0, 0, 0, 86, 127, 0, 0, 0, 0, 77, 125, 0, 0, 0, 0, 67, 115, 0, 0, 0, 0, 59, 105, 0, 0, 0, 0, 52, 97, 0, 0, 0, 0, 44, 93, 0, 0, 0, 0, 33, 102, 0, 0, 0, 0, 32, 89, 0, 0, 0, 0, 55, 67, 0, 0, 0, 0, 89, 53, 0, 0, 0, 0, 124, 66, 0, 0, 0, 0, 135, 95, 0, 0, 0, 0, 107, 87, 0, 0, 0, 0, 81, 83, 0, 0, 0, 0, 65, 92, 0, 0, 0, 0, 24, 87)
 }
-point_count = 5
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_qvumr"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": null
-}],
-"loop": true,
-"name": &"animation",
-"speed": 2.0
-}]
+point_count = 34
 
 [node name="juego" type="Node"]
 script = SubResource("GDScript_rfos1")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_qj547")]
 
 [node name="ui" parent="." instance=ExtResource("1_7qkn4")]
 layer = -1
@@ -80,33 +64,25 @@ layer = -1
 wait_time = 0.5
 
 [node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(187, 406)
-
-[node name="Path2D" type="Path2D" parent="."]
-visible = false
-top_level = true
-texture_filter = 1
-curve = SubResource("Curve2D_hsh5a")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-visible = false
-position = Vector2(-1, 758)
-rotation = -1.5708
-progress = 0.000183105
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-visible = false
-modulate = Color(0.88525, 0.630923, 0.645974, 1)
-self_modulate = Color(0.444466, 0.645357, 0.499544, 1)
-top_level = true
-texture_filter = 1
-position = Vector2(186, 639)
-scale = Vector2(1.09808, 1.09808)
-sprite_frames = SubResource("SpriteFrames_qvumr")
-animation = &"animation"
-frame_progress = 0.375902
+position = Vector2(90, 161)
+zoom = Vector2(2, 2)
 
 [node name="fruits" parent="." instance=ExtResource("6_tuqwn")]
+visible = false
+position = Vector2(158, 453)
+
+[node name="Node2D" parent="." instance=ExtResource("3_01w8b")]
+position = Vector2(-95, -218)
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_yeod4")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(24, 87)
+rotation = -0.953041
+
+[node name="hobbit" parent="." instance=ExtResource("5_skbkr")]
+position = Vector2(49, 172)
 
 [connection signal="timeout" from="FruitTimer" to="." method="_on_fruit_timer_timeout"]
 [connection signal="input_event" from="fruits" to="." method="_on_fruits_input_event"]

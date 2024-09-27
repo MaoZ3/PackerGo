@@ -19,7 +19,7 @@
 [sub_resource type="GDScript" id="GDScript_4cmnw"]
 script/source = "extends RigidBody2D
 
-var current_animation
+var label
 
 func _ready():
 	# Obtener los nombres de las animaciones de la fruta
@@ -27,7 +27,6 @@ func _ready():
 
 	# Generar un índice aleatorio para seleccionar una animación
 	var random_index = randi() % fruit_animations.size()
-
 
 	while random_index == 14:
 		random_index = randi() % fruit_animations.size()
@@ -38,33 +37,30 @@ func _ready():
 	# Asignar una rotación aleatoria
 	randomize()  # Asegurarse de que el generador de números aleatorios esté inicializado
 	rotation = randf_range(0, 2 * PI)  # Asignar una rotación aleatoria en radianes
+	label = get_tree().root.get_node(\"juego/Control/Label\")  # Reemplaza con la ruta real de tu escena
 
-	# Conectar la señal input_event para esta instancia	
-	connect(\"input_event\", Callable(self, \"_on_input_event\"))
-
-# Función llamada cuando el objeto sale de la pantalla
-func _on_visible_on_screen_notifier_2d_screen_exited():
+# Función llamada cuando el temporizador llega a 0 (pasaron 3 segundos sin clic)
+func _on_timer_timeout() -> void:
 	queue_free()
-	
 
 func _on_input_event(_viewport, event, _shape_idx):
-	if event is InputEvent and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		print_animation_name()
-	
+		if label:
+			label.text = \"Fruta clickeada: \" + $AnimatedSprite2D.get(\"animation\")
+		queue_free()  # Eliminar la fruta al hacer clic
 
+# Imprimir el nombre de la animación actual
 func print_animation_name():
-	print(\"Animation name: \" + self.current_animation)
+	var current_animation = $AnimatedSprite2D.get(\"animation\")
+	print(current_animation)
 	
 
-func _input(event): 
-	pass
 	
-
-
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lcnen"]
-radius = 10.0499
+radius = 6.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_53bvf"]
 atlas = ExtResource("1_v0bd1")
@@ -258,18 +254,19 @@ script = SubResource("GDScript_4cmnw")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 texture_filter = 1
 shape = SubResource("CircleShape2D_lcnen")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -2)
-scale = Vector2(1.45028, 1.45028)
 sprite_frames = SubResource("SpriteFrames_4cuvl")
-animation = &"AnA"
+animation = &"Bnn"
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,370 @@
+[gd_scene load_steps=81 format=3 uid="uid://db5drlejhxrf2"]
+
+[ext_resource type="Texture2D" uid="uid://ch7u5lrsuhhvh" path="res://pngs/Hobbit - Idle2.png" id="1_3rpc0"]
+[ext_resource type="Script" path="res://hobbit.gd" id="1_brtvi"]
+[ext_resource type="Texture2D" uid="uid://vk7ek73j56kn" path="res://pngs/Hobbit - attack1.png" id="2_6b1dc"]
+[ext_resource type="Texture2D" uid="uid://o5nqgfqf1svu" path="res://pngs/Hobbit - Idle3.png" id="2_ieuls"]
+[ext_resource type="Texture2D" uid="uid://dw1wm5ed8arij" path="res://pngs/Hobbit - attack2.png" id="3_1dhn1"]
+[ext_resource type="Texture2D" uid="uid://bc8wlqwsx058q" path="res://pngs/Hobbit - Idle4.png" id="3_1ei3d"]
+[ext_resource type="Texture2D" uid="uid://dwgur7dy8q31s" path="res://pngs/Hobbit - attack3.png" id="4_2kl6u"]
+[ext_resource type="Texture2D" uid="uid://cvdw8c1sv5icb" path="res://pngs/Hobbit - attack4.png" id="5_qboa4"]
+[ext_resource type="Texture2D" uid="uid://cq8efi68fxc80" path="res://pngs/Hobbit - attack5.png" id="6_xdxlt"]
+[ext_resource type="Texture2D" uid="uid://dy2x44fspy483" path="res://pngs/Hobbit - attack6.png" id="7_xprkf"]
+[ext_resource type="Texture2D" uid="uid://bnhpopafu8lo0" path="res://pngs/Hobbit - attack7.png" id="8_et2ee"]
+[ext_resource type="Texture2D" uid="uid://b51kamccd2mlf" path="res://pngs/Hobbit - attack8.png" id="9_2g2ec"]
+[ext_resource type="Texture2D" uid="uid://oghvfohb6qrg" path="res://pngs/Hobbit - attack9.png" id="10_q5o5l"]
+[ext_resource type="Texture2D" uid="uid://co41dqbolq8md" path="res://pngs/Hobbit - attack10.png" id="11_68pd1"]
+[ext_resource type="Texture2D" uid="uid://e24gg8dgffbp" path="res://pngs/Hobbit - attack11.png" id="12_hefq0"]
+[ext_resource type="Texture2D" uid="uid://b5gw6nalbvjf" path="res://pngs/Hobbit - attack12.png" id="13_kqqiu"]
+[ext_resource type="Texture2D" uid="uid://forh0bouiept" path="res://pngs/Hobbit - attack13.png" id="14_nhm3d"]
+[ext_resource type="Texture2D" uid="uid://dotg4wblkwpns" path="res://pngs/Hobbit - attack14.png" id="15_ty7p1"]
+[ext_resource type="Texture2D" uid="uid://c5dbajvasd64m" path="res://pngs/Hobbit - attack15.png" id="16_3nseu"]
+[ext_resource type="Texture2D" uid="uid://bebrkv3081wlv" path="res://pngs/Hobbit - attack16.png" id="17_iby7a"]
+[ext_resource type="Texture2D" uid="uid://cfj3ejc1xavdl" path="res://pngs/Hobbit - attack17.png" id="18_4ay02"]
+[ext_resource type="Texture2D" uid="uid://bfjyfmeiy8pf8" path="res://pngs/Hobbit - block1.png" id="19_17lxl"]
+[ext_resource type="Texture2D" uid="uid://b4cut7kg6nr5g" path="res://pngs/Hobbit - block2.png" id="20_kiw5g"]
+[ext_resource type="Texture2D" uid="uid://cyin701fgudjd" path="res://pngs/Hobbit - block3.png" id="21_tepo2"]
+[ext_resource type="Texture2D" uid="uid://nlxiy42qe1sw" path="res://pngs/Hobbit - block4.png" id="22_1v4lf"]
+[ext_resource type="Texture2D" uid="uid://cdilpqt258wo1" path="res://pngs/Hobbit - block5.png" id="23_70ddk"]
+[ext_resource type="Texture2D" uid="uid://br7v2cd2q74m3" path="res://pngs/Hobbit - block6.png" id="24_83xh4"]
+[ext_resource type="Texture2D" uid="uid://dfd2uh7np4t55" path="res://pngs/Hobbit - block7.png" id="25_jjclq"]
+[ext_resource type="Texture2D" uid="uid://cmuhurcuioivg" path="res://pngs/Hobbit - block8.png" id="26_fp7v0"]
+[ext_resource type="Texture2D" uid="uid://crjx40qugu3om" path="res://pngs/Hobbit - block9.png" id="27_1y7yt"]
+[ext_resource type="Texture2D" uid="uid://b661qicqa5hql" path="res://pngs/Hobbit - block10.png" id="28_er24o"]
+[ext_resource type="Texture2D" uid="uid://7khpva68wd6o" path="res://pngs/Hobbit - block11.png" id="29_xx1u2"]
+[ext_resource type="Texture2D" uid="uid://r3xn7q5a0bgx" path="res://pngs/Hobbit - block12.png" id="30_wyniw"]
+[ext_resource type="Texture2D" uid="uid://2faxc63nv08m" path="res://pngs/Hobbit - block13.png" id="31_v4dic"]
+[ext_resource type="Texture2D" uid="uid://cy2vmd215ww7m" path="res://pngs/Hobbit - death1.png" id="32_5enaq"]
+[ext_resource type="Texture2D" uid="uid://gx4gveehvxoj" path="res://pngs/Hobbit - death2.png" id="33_qxxlq"]
+[ext_resource type="Texture2D" uid="uid://0k02sbk0f0i6" path="res://pngs/Hobbit - death3.png" id="34_pjwhb"]
+[ext_resource type="Texture2D" uid="uid://b54v1cikb413n" path="res://pngs/Hobbit - death4.png" id="35_g70vb"]
+[ext_resource type="Texture2D" uid="uid://dv6778rvsf417" path="res://pngs/Hobbit - death5.png" id="36_cen86"]
+[ext_resource type="Texture2D" uid="uid://dcn7jq5r4l8yi" path="res://pngs/Hobbit - death6.png" id="37_8lpbf"]
+[ext_resource type="Texture2D" uid="uid://lph0c1xfy63" path="res://pngs/Hobbit - death7.png" id="38_nuttq"]
+[ext_resource type="Texture2D" uid="uid://dg2qq3u4l1r3u" path="res://pngs/Hobbit - death8.png" id="39_vj033"]
+[ext_resource type="Texture2D" uid="uid://pnf13epj2e8a" path="res://pngs/Hobbit - death9.png" id="40_r0cpy"]
+[ext_resource type="Texture2D" uid="uid://daax3eh4so8ga" path="res://pngs/Hobbit - death10.png" id="41_yk4ph"]
+[ext_resource type="Texture2D" uid="uid://bfegbll8rol28" path="res://pngs/Hobbit - death11.png" id="42_0ofc4"]
+[ext_resource type="Texture2D" uid="uid://do3abjjsxv62j" path="res://pngs/Hobbit - death12.png" id="43_7lwej"]
+[ext_resource type="Texture2D" uid="uid://bpxrtextxhn63" path="res://pngs/Hobbit - hit1.png" id="44_k1hcq"]
+[ext_resource type="Texture2D" uid="uid://gjjpoohuy5gt" path="res://pngs/Hobbit - hit2.png" id="45_kve5u"]
+[ext_resource type="Texture2D" uid="uid://bgl6jjqw7ri2k" path="res://pngs/Hobbit - hit3.png" id="46_ywr6r"]
+[ext_resource type="Texture2D" uid="uid://dbqvhm30o8bfs" path="res://pngs/Hobbit - hit4.png" id="47_o4qlr"]
+[ext_resource type="Texture2D" uid="uid://c1gpm7qphn3k0" path="res://pngs/Hobbit - jumpt1.png" id="51_dn3h5"]
+[ext_resource type="Texture2D" uid="uid://bdja20g5vhsd" path="res://pngs/Hobbit - jumpt2.png" id="52_cyrgx"]
+[ext_resource type="Texture2D" uid="uid://bu6i7pjt7e7if" path="res://pngs/Hobbit - jumpt3.png" id="53_efvwt"]
+[ext_resource type="Texture2D" uid="uid://b80by5ejrnvsm" path="res://pngs/Hobbit - jumpt4.png" id="54_skyhc"]
+[ext_resource type="Texture2D" uid="uid://be15i5jjjijf6" path="res://pngs/Hobbit - jumpt5.png" id="55_6v032"]
+[ext_resource type="Texture2D" uid="uid://ccuwiyvka74f8" path="res://pngs/Hobbit - jumpt6.png" id="56_w2aug"]
+[ext_resource type="Texture2D" uid="uid://6i4rvqx6mlsw" path="res://pngs/Hobbit - jumpt7.png" id="57_x0jkt"]
+[ext_resource type="Texture2D" uid="uid://n86itfrcm8kq" path="res://pngs/Hobbit - jumpt8.png" id="58_0cl8y"]
+[ext_resource type="Texture2D" uid="uid://b0pm4ywotlqui" path="res://pngs/Hobbit - jumpt9.png" id="59_7c6be"]
+[ext_resource type="Texture2D" uid="uid://cq0oix0ejjqnb" path="res://pngs/Hobbit - jumpt10.png" id="60_5ligm"]
+[ext_resource type="Texture2D" uid="uid://k47v8mfrvjua" path="res://pngs/Hobbit - run1.png" id="61_golv4"]
+[ext_resource type="Texture2D" uid="uid://c82vm7bckm5io" path="res://pngs/Hobbit - run2.png" id="62_56ttt"]
+[ext_resource type="Texture2D" uid="uid://ba5r6el18for1" path="res://pngs/Hobbit - run3.png" id="63_icncw"]
+[ext_resource type="Texture2D" uid="uid://cus16648pdb4h" path="res://pngs/Hobbit - run4.png" id="64_ybmbp"]
+[ext_resource type="Texture2D" uid="uid://cuuvnco02lwj4" path="res://pngs/Hobbit - run5.png" id="65_wkr35"]
+[ext_resource type="Texture2D" uid="uid://btaur6i52lfvs" path="res://pngs/Hobbit - run6.png" id="66_n074h"]
+[ext_resource type="Texture2D" uid="uid://cpcq1muarftb8" path="res://pngs/Hobbit - run7.png" id="67_cp54q"]
+[ext_resource type="Texture2D" uid="uid://dem5nwivj0gfl" path="res://pngs/Hobbit - run8.png" id="68_w5x8a"]
+[ext_resource type="Texture2D" uid="uid://ca1n686i4di76" path="res://pngs/Hobbit - run9.png" id="69_6r8q2"]
+[ext_resource type="Texture2D" uid="uid://ddwvnik1px4w7" path="res://pngs/Hobbit - run10.png" id="70_8yc8r"]
+[ext_resource type="Texture2D" uid="uid://5k1pjacqjos6" path="res://pngs/Hobbit - stop1.png" id="71_ilv7j"]
+[ext_resource type="Texture2D" uid="uid://ddl0i4tpuj8cn" path="res://pngs/Hobbit - stop2.png" id="72_j1dc6"]
+[ext_resource type="Texture2D" uid="uid://byg1qob655s7l" path="res://pngs/Hobbit - stop3.png" id="73_v3w85"]
+[ext_resource type="Texture2D" uid="uid://b5lf1j06cief8" path="res://pngs/Hobbit - stop4.png" id="74_gk2gn"]
+[ext_resource type="Texture2D" uid="uid://bdcn627wg58db" path="res://pngs/Hobbit - stop5.png" id="75_3o8bi"]
+[ext_resource type="Texture2D" uid="uid://vjdtqdqmai2n" path="res://pngs/Hobbit - stop6.png" id="76_vqgg6"]
+[ext_resource type="Texture2D" uid="uid://bd34amaothyxy" path="res://pngs/Hobbit - stop7.png" id="77_5kxiy"]
+[ext_resource type="Texture2D" uid="uid://b10fqs282srro" path="res://pngs/Hobbit - stop8.png" id="78_eird8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g0k4g"]
+radius = 6.0
+height = 14.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_67nph"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6b1dc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1dhn1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2kl6u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qboa4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xdxlt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xprkf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_et2ee")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2g2ec")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_q5o5l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_68pd1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_hefq0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_kqqiu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_nhm3d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ty7p1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_3nseu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_iby7a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_4ay02")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_17lxl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_kiw5g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_tepo2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_1v4lf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_70ddk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_83xh4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_jjclq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_fp7v0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_1y7yt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_er24o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_xx1u2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_wyniw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_v4dic")
+}],
+"loop": false,
+"name": &"block",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("32_5enaq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_qxxlq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_pjwhb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_g70vb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_cen86")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_8lpbf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_nuttq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_vj033")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_r0cpy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_yk4ph")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_0ofc4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_7lwej")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("44_k1hcq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_kve5u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_ywr6r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_o4qlr")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3rpc0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ieuls")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1ei3d")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("51_dn3h5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_cyrgx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_efvwt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_skyhc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_6v032")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_w2aug")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_x0jkt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_0cl8y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_7c6be")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_5ligm")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("61_golv4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_56ttt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_icncw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_ybmbp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_wkr35")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_n074h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_cp54q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_w5x8a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_6r8q2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_8yc8r")
+}],
+"loop": true,
+"name": &"run",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("71_ilv7j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_j1dc6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("73_v3w85")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_gk2gn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_3o8bi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_vqgg6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_5kxiy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_eird8")
+}],
+"loop": false,
+"name": &"stop",
+"speed": 5.0
+}]
+
+[node name="hobbit" type="CharacterBody2D"]
+script = ExtResource("1_brtvi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_g0k4g")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_67nph")
+animation = &"attack"
+frame_progress = 0.0489481

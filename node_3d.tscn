@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cv5lwxtdsdy2l"]
+
+[ext_resource type="Texture2D" uid="uid://ty5anha5ae5c" path="res://frutas/mznR.png" id="1_ajni7"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = ExtResource("1_ajni7")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10785, 0.175469, 1.35335)

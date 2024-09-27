@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://btl53v6ose267"]
+
+[ext_resource type="Texture2D" uid="uid://dvdudwt2xi2gf" path="res://frutas/Clouds 7/1.png" id="1_badfr"]
+[ext_resource type="Texture2D" uid="uid://dknxyn83wi0eu" path="res://frutas/Clouds 7/2.png" id="2_hm5fb"]
+[ext_resource type="Texture2D" uid="uid://cg7hqf75j8fc1" path="res://frutas/Clouds 7/3.png" id="3_g4gra"]
+[ext_resource type="Texture2D" uid="uid://bv0cuqbp21nqp" path="res://frutas/Clouds 7/4.png" id="4_jop7h"]
+
+[sub_resource type="GDScript" id="GDScript_nt6aj"]
+script/source = "extends ParallaxBackground
+
+var base_speed = Vector2(20, 0)  # Velocidad base del fondo
+
+func _process(delta: float) -> void:
+	# Desplazar las capas de parallax con diferentes velocidades
+	foreach_parallax_layer(base_speed * delta)
+
+# Función para aplicar el movimiento a todas las capas con velocidades distintas
+func foreach_parallax_layer(base_speed: Vector2):
+	for layer in get_children():
+		if layer is ParallaxLayer:
+			# Aplicar una velocidad basada en el motion_scale de cada capa
+			var layer_speed = base_speed * layer.motion_scale
+			layer.motion_offset += layer_speed
+"
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+follow_viewport_enabled = true
+script = SubResource("GDScript_nt6aj")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(576, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+texture_filter = 1
+texture = ExtResource("1_badfr")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(576, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer2"]
+texture_filter = 1
+texture = ExtResource("2_hm5fb")
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(576, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer3"]
+texture_filter = 1
+texture = ExtResource("3_g4gra")
+centered = false
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(1.2, 1.2)
+motion_mirroring = Vector2(576, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer4"]
+texture_filter = 1
+texture = ExtResource("4_jop7h")
+centered = false

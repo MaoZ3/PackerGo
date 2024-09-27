@@ -12,13 +12,13 @@ config_version=5
 
 config/name="Embalador go"
 run/main_scene="res://juego.tscn"
-config/features=PackedStringArray("4.2", "GL Compatibility")
+config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=375
-window/size/viewport_height=812
+window/size/viewport_width=360
+window/size/viewport_height=640
 window/stretch/mode="canvas_items"
 window/handheld/orientation=1
 
