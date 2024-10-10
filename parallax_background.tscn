@@ -25,11 +25,14 @@ func foreach_parallax_layer(base_speed: Vector2):
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
 follow_viewport_enabled = true
+scroll_limit_begin = Vector2(500, 500)
+scroll_limit_end = Vector2(500, 500)
+scroll_ignore_camera_zoom = true
 script = SubResource("GDScript_nt6aj")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.5, 0.5)
-motion_mirroring = Vector2(576, 0)
+motion_mirroring = Vector2(576, 324)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
 texture_filter = 1

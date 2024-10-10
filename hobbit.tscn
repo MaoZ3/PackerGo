@@ -288,7 +288,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("60_5ligm")
 }],
-"loop": false,
+"loop": true,
 "name": &"jump",
 "speed": 5.0
 }, {
@@ -361,10 +361,32 @@ animations = [{
 script = ExtResource("1_brtvi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CapsuleShape2D_g0k4g")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_67nph")
-animation = &"attack"
-frame_progress = 0.0489481
+animation = &"jump"
+frame_progress = 0.80061
+
+[node name="fruit0" type="Marker2D" parent="."]
+texture_filter = 1
+position = Vector2(1, 2)
+gizmo_extents = 1.0
+
+[node name="fruit1" type="Marker2D" parent="."]
+position = Vector2(-6, -5)
+gizmo_extents = 1.0
+
+[node name="fruit2" type="Marker2D" parent="."]
+position = Vector2(5, -5)
+gizmo_extents = 1.0
+
+[node name="fruit3" type="Marker2D" parent="."]
+position = Vector2(0, -9)
+gizmo_extents = 1.0
+
+[node name="fruit4" type="Marker2D" parent="."]
+position = Vector2(-7, -5)
+gizmo_extents = 1.0

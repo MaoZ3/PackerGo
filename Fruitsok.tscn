@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://5jswlyu8v1ps"]
+[gd_scene load_steps=45 format=3 uid="uid://5jswlyu8v1ps"]
 
 [ext_resource type="Texture2D" uid="uid://5vermmf1gglr" path="res://frutas/bnn.png" id="1_jc565"]
 [ext_resource type="Texture2D" uid="uid://buj0d4r5ulr5m" path="res://frutas/anna.png" id="1_v0bd1"]
@@ -15,48 +15,50 @@
 [ext_resource type="Texture2D" uid="uid://d0ptaxrbq6ybn" path="res://frutas/mznD2.png" id="9_8jrqa"]
 [ext_resource type="Texture2D" uid="uid://cmigb0thuwnyw" path="res://frutas/uvaV.png" id="9_hbgt4"]
 [ext_resource type="Texture2D" uid="uid://dhny1lnngd0lv" path="res://frutas/nrj.png" id="12_gjr24"]
+[ext_resource type="Texture2D" uid="uid://bh6esdnf0ra7j" path="res://frutas/bombm.png" id="16_sfs4y"]
+[ext_resource type="Texture2D" uid="uid://b6hxbjuwwp36n" path="res://frutas/bombmhit.png" id="17_la76k"]
+[ext_resource type="Texture2D" uid="uid://byse8v8s7qwg" path="res://frutas/22.png" id="18_475bh"]
 
 [sub_resource type="GDScript" id="GDScript_4cmnw"]
 script/source = "extends RigidBody2D
 
 var label
+var collected = false
 
 func _ready():
-	# Obtener los nombres de las animaciones de la fruta
+	randomize_fruit_animation()
+	randomize_rotation()
+	label = get_tree().root.get_node(\"Control/Label\")
+
+func randomize_fruit_animation():
 	var fruit_animations = $AnimatedSprite2D.sprite_frames.get_animation_names()
-
-	# Generar un índice aleatorio para seleccionar una animación
 	var random_index = randi() % fruit_animations.size()
-
-	while random_index == 14:
+	while random_index == 20:
 		random_index = randi() % fruit_animations.size()
-
-	# Reproducir la animación usando el índice generado
 	$AnimatedSprite2D.play(fruit_animations[random_index])
 
-	# Asignar una rotación aleatoria
-	randomize()  # Asegurarse de que el generador de números aleatorios esté inicializado
-	rotation = randf_range(0, 2 * PI)  # Asignar una rotación aleatoria en radianes
-	label = get_tree().root.get_node(\"juego/Control/Label\")  # Reemplaza con la ruta real de tu escena
+func randomize_rotation():
+	rotation = randf_range(0, 2 * PI)
 
-# Función llamada cuando el temporizador llega a 0 (pasaron 3 segundos sin clic)
 func _on_timer_timeout() -> void:
-	queue_free()
+	if not collected:
+		queue_free()
 
 func _on_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		print_animation_name()
+		if not collected:
+			print_animation_name()
+		
 		if label:
-			label.text = \"Fruta clickeada: \" + $AnimatedSprite2D.get(\"animation\")
-		queue_free()  # Eliminar la fruta al hacer clic
+			label.text = \"Fruta clickeada: \" + $AnimatedSprite2D.animation
+		queue_free()
 
-# Imprimir el nombre de la animación actual
 func print_animation_name():
-	var current_animation = $AnimatedSprite2D.get(\"animation\")
-	print(current_animation)
-	
+	print($AnimatedSprite2D.animation)
 
-	
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body is CharacterBody2D and not collected:
+		body._on_fruit_collision(self)
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lcnen"]
@@ -121,6 +123,34 @@ region = Rect2(0, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_kraec"]
 atlas = ExtResource("9_hbgt4")
 region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcqga"]
+atlas = ExtResource("18_475bh")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68thm"]
+atlas = ExtResource("18_475bh")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gxpg"]
+atlas = ExtResource("18_475bh")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41u5l"]
+atlas = ExtResource("18_475bh")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27ywc"]
+atlas = ExtResource("18_475bh")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i08x5"]
+atlas = ExtResource("18_475bh")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tbxb"]
+atlas = ExtResource("18_475bh")
+region = Rect2(160, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4cuvl"]
 animations = [{
@@ -243,10 +273,51 @@ animations = [{
 "loop": false,
 "name": &"UvaV",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_sfs4y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_la76k")
+}],
+"loop": true,
+"name": &"bombf",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcqga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68thm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3gxpg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41u5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_27ywc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i08x5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0tbxb")
+}],
+"loop": false,
+"name": &"tuc",
+"speed": 30.0
 }]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r58en"]
+radius = 7.0
 
 [node name="fruits" type="RigidBody2D"]
 top_level = true
+collision_layer = 2
 input_pickable = true
 mass = 0.01
 gravity_scale = 0.0
@@ -261,12 +332,19 @@ shape = SubResource("CircleShape2D_lcnen")
 texture_filter = 1
 position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_4cuvl")
-animation = &"Bnn"
+animation = &"UvaV"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
 autostart = true
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_r58en")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
