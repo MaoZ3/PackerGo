@@ -369,24 +369,3 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_67nph")
 animation = &"jump"
 frame_progress = 0.80061
-
-[node name="fruit0" type="Marker2D" parent="."]
-texture_filter = 1
-position = Vector2(1, 2)
-gizmo_extents = 1.0
-
-[node name="fruit1" type="Marker2D" parent="."]
-position = Vector2(-6, -5)
-gizmo_extents = 1.0
-
-[node name="fruit2" type="Marker2D" parent="."]
-position = Vector2(5, -5)
-gizmo_extents = 1.0
-
-[node name="fruit3" type="Marker2D" parent="."]
-position = Vector2(0, -9)
-gizmo_extents = 1.0
-
-[node name="fruit4" type="Marker2D" parent="."]
-position = Vector2(-7, -5)
-gizmo_extents = 1.0
