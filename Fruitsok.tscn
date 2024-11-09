@@ -315,7 +315,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_r58en"]
 radius = 7.0
 
-[node name="fruits" type="RigidBody2D"]
+[node name="fruits" type="RigidBody2D" groups=["fruits"]]
 top_level = true
 collision_layer = 2
 input_pickable = true
@@ -343,6 +343,8 @@ autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_r58en")
+
+[node name="Timer2" type="Timer" parent="."]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]

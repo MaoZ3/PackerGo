@@ -367,5 +367,4 @@ shape = SubResource("CapsuleShape2D_g0k4g")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_67nph")
-animation = &"jump"
-frame_progress = 0.80061
+animation = &"run"

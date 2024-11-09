@@ -82,7 +82,7 @@ rotation = -0.953041
 position = Vector2(49, 172)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(93, 162)
+position = Vector2(93, 55)
 zoom = Vector2(2, 2)
 
 [node name="Control" type="Control" parent="."]
