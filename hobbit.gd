@@ -131,6 +131,7 @@ func _throw_fruit():
 		print("No se puede lanzar: la fruta ya no es válida")
 		return
 
+	# Remover la fruta del personaje y añadirla de nuevo al padre
 	call_deferred("remove_child", fruit)
 	get_parent().call_deferred("add_child", fruit)
 	
@@ -143,14 +144,32 @@ func _throw_fruit():
 		if child is CollisionShape2D or child is CollisionPolygon2D:
 			child.set_deferred("disabled", false)
 	
-	var throw_direction = Vector2(1 if not $AnimatedSprite2D.flip_h else -1, -0.5).normalized()
+	# Determinar la dirección del lanzamiento basado en la entrada del jugador
+	var throw_direction = Vector2()
+	if Input.is_action_pressed("ui_up"):
+		throw_direction.y -= 1
+	if Input.is_action_pressed("ui_down"):
+		throw_direction.y += 1
+	if Input.is_action_pressed("ui_left"):
+		throw_direction.x -= 1
+	if Input.is_action_pressed("ui_right"):
+		throw_direction.x += 1
+
+	# Normaliza el vector para evitar que tenga una velocidad mayor en diagonales
+	throw_direction = throw_direction.normalized()
+	
+	# Si no se ha indicado una dirección, usa la dirección horizontal predeterminada del personaje
+	if throw_direction == Vector2.ZERO:
+		throw_direction = Vector2(1 if not $AnimatedSprite2D.flip_h else -1, -0.5).normalized()
+	
 	var throw_speed = randf_range(THROW_SPEED_MIN, THROW_SPEED_MAX)
 	
+	# Aplica la fuerza de lanzamiento
 	call_deferred("apply_throw_force", fruit, throw_direction * throw_speed)
 	
 	collected_fruit = null
 	throw_timer = THROW_COOLDOWN
-	print("Fruta lanzada")
+	print("Fruta lanzada en dirección: ", throw_direction)
 
 func apply_throw_force(fruit: RigidBody2D, throw_velocity: Vector2) -> void:
 	if is_instance_valid(fruit):

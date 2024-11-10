@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://difb0xfrwf5xf"]
+[gd_scene load_steps=8 format=3 uid="uid://difb0xfrwf5xf"]
 
 [ext_resource type="PackedScene" uid="uid://btl53v6ose267" path="res://parallax_background.tscn" id="1_qj547"]
 [ext_resource type="PackedScene" uid="uid://b8ng18mytobe5" path="res://tree.tscn" id="3_01w8b"]
+[ext_resource type="PackedScene" uid="uid://dr2lbasi62wy3" path="res://BBird.tscn" id="5_kbcut"]
 [ext_resource type="PackedScene" uid="uid://db5drlejhxrf2" path="res://hobbit.tscn" id="5_skbkr"]
 [ext_resource type="PackedScene" uid="uid://5jswlyu8v1ps" path="res://Fruitsok.tscn" id="6_tuqwn"]
 
@@ -10,8 +11,17 @@ script/source = "extends Node  # o extends Node2D si necesitas funcionalidad 2D
 
 @onready var fruit_timer = $FruitTimer
 @onready var path_follow = $Path2D/PathFollow2D
+@onready var enemy_spawner = $EnemySpawner
+@onready var enemies_container = $BBird
+@export var bird_scene = preload(\"res://BBird.tscn\")
+
+func _on_enemy_spawner_timeout():
+	var bird_instance = bird_scene.instantiate()
+	bird_instance.position = Vector2(randf() * 800, 0)  # Aparece en el borde superior
+	enemies_container.add_child(bird_instance)
 
 func _ready():
+	enemy_spawner.start()
 	if fruit_timer:
 		fruit_timer.start()
 	else:
@@ -98,6 +108,10 @@ unique_name_in_owner = true
 layout_mode = 1
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="EnemySpawner" type="Timer" parent="."]
+
+[node name="BBird" parent="." instance=ExtResource("5_kbcut")]
 
 [connection signal="timeout" from="FruitTimer" to="." method="_on_fruit_timer_timeout"]
 [connection signal="input_event" from="fruits" to="." method="_on_fruits_input_event"]

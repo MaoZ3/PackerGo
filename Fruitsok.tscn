@@ -26,6 +26,7 @@ var label
 var collected = false
 
 func _ready():
+	add_to_group(\"fruits\")
 	randomize_fruit_animation()
 	randomize_rotation()
 	label = get_tree().root.get_node(\"Control/Label\")
