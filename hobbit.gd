@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+
+
+@onready var visible_notifier = $VisibleOnScreenNotifier2D
+
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
@@ -11,9 +15,12 @@ const THROW_COOLDOWN = 1.0  # Tiempo en segundos antes de poder recoger la fruta
 const COLLECT_DISTANCE = 1.0  # Distancia máxima para recoger una fruta
 
 var throw_timer: float = 0.0
+var initial_position: Vector2  # Posición inicial para usar como punto de respawn
 
 func _ready():
 	print("Personaje listo")
+	initial_position = global_position  # Guardar la posición inicial del personaje
+
 
 func _physics_process(delta: float) -> void:
 
@@ -46,7 +53,19 @@ func _physics_process(delta: float) -> void:
 	
 	# Actualizar la posición de la fruta recolectada para que se superponga al personaje
 	update_collected_fruit_position()
+	
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	print("salio")	# Cuando el personaje sale de la pantalla, se activa este método
+	respawn()
 
+
+func respawn():
+	# Lleva al personaje a la posición inicial guardada
+	global_position = initial_position
+	velocity = Vector2.ZERO  # Restablece la velocidad para evitar movimientos abruptos
+	print("Personaje reaparecido en la posición inicial")
+	
+	
 # Detectar entrada para recolección de frutas y lanzamiento
 func _input(_event):
 	if Input.is_action_just_pressed("collect_fruit"):

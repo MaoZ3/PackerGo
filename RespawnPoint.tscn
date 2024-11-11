@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8qkavik48ung"]
+
+[ext_resource type="Script" path="res://respawn_point.gd" id="1_5g60b"]
+[ext_resource type="Texture2D" uid="uid://n0fmw72ybgxx" path="res://totem2.png" id="1_tv2fc"]
+[ext_resource type="Texture2D" uid="uid://bagxcwk6dnbp8" path="res://totem3.png" id="2_w60rh"]
+[ext_resource type="Texture2D" uid="uid://dq8g3ffont66d" path="res://totem4.png" id="3_ufd8o"]
+[ext_resource type="Texture2D" uid="uid://dakldgnmg25vo" path="res://totem5.png" id="4_jsdyx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4u51x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tv2fc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_w60rh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ufd8o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jsdyx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 11.0
+}]
+
+[node name="RPPoint" type="Marker2D"]
+script = ExtResource("1_5g60b")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -1
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_4u51x")
+frame_progress = 0.272311

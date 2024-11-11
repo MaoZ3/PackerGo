@@ -32,7 +32,7 @@ script = ExtResource("1_f4odo")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_oi41q")
 animation = &"fly"
-frame_progress = 0.923142
+frame_progress = 0.901186
 
 [node name="Area2D" type="Area2D" parent="."]
 
