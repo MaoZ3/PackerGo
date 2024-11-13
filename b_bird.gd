@@ -59,8 +59,10 @@ func _on_body_entered(body: RigidBody2D) -> void:
 
 # Función para detectar cuándo el enemigo sale de la pantalla
 func _on_screen_exited():
+	queue_redraw()
 	queue_free()  # Elimina el enemigo cuando sale de la pantalla
 	_respawn_enemy()  # Llama a la función de respawn
+	
 
 # Función de respawn para crear un nuevo enemigo en la posición inicial
 func _respawn_enemy():

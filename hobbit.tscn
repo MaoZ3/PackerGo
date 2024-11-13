@@ -368,7 +368,7 @@ shape = SubResource("CapsuleShape2D_g0k4g")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_67nph")
 animation = &"attack"
-frame_progress = 0.934602
+frame_progress = 0.880846
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 visible = false

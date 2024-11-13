@@ -1,26 +1,22 @@
 extends CharacterBody2D
 
-
-
 @onready var visible_notifier = $VisibleOnScreenNotifier2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-
-var collected_fruit: WeakRef = null
-
 const THROW_SPEED_MIN = 300.0
 const THROW_SPEED_MAX = 600.0
 const THROW_COOLDOWN = 1.0  # Tiempo en segundos antes de poder recoger la fruta lanzada
 const COLLECT_DISTANCE = 1.0  # Distancia máxima para recoger una fruta
 
+var collected_fruit: WeakRef = null
 var throw_timer: float = 0.0
-var initial_position: Vector2  # Posición inicial para usar como punto de respawn
+@export var respawn_position: Vector2 = Vector2(0, 0) # Posición inicial para usar como punto de respawn
 
 func _ready():
 	print("Personaje listo")
-	initial_position = global_position  # Guardar la posición inicial del personaje
-
+	respawn_position = global_position  # Guardar la posición inicial del personaje
+	
 
 func _physics_process(delta: float) -> void:
 
@@ -55,15 +51,15 @@ func _physics_process(delta: float) -> void:
 	update_collected_fruit_position()
 	
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	print("salio")	# Cuando el personaje sale de la pantalla, se activa este método
+	print("El personaje salió de la pantalla, reapareciendo...")
 	respawn()
 
-
 func respawn():
-	# Lleva al personaje a la posición inicial guardada
-	global_position = initial_position
-	velocity = Vector2.ZERO  # Restablece la velocidad para evitar movimientos abruptos
-	print("Personaje reaparecido en la posición inicial")
+
+	# Lleva al personaje de vuelta a la posición de respawn
+	global_position = respawn_position
+	velocity = Vector2.ZERO  # Restablece la velocidad a cero
+	print("Personaje reaparecido en el punto de respawn")
 	
 	
 # Detectar entrada para recolección de frutas y lanzamiento
