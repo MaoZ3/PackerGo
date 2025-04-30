@@ -1,7 +1,7 @@
-[gd_scene load_steps=81 format=3 uid="uid://db5drlejhxrf2"]
+[gd_scene load_steps=97 format=3 uid="uid://db5drlejhxrf2"]
 
 [ext_resource type="Texture2D" uid="uid://ch7u5lrsuhhvh" path="res://pngs/Hobbit - Idle2.png" id="1_3rpc0"]
-[ext_resource type="Script" path="res://hobbit.gd" id="1_brtvi"]
+[ext_resource type="Script" uid="uid://mx3qll6myuvr" path="res://hobbit.gd" id="1_brtvi"]
 [ext_resource type="Texture2D" uid="uid://vk7ek73j56kn" path="res://pngs/Hobbit - attack1.png" id="2_6b1dc"]
 [ext_resource type="Texture2D" uid="uid://o5nqgfqf1svu" path="res://pngs/Hobbit - Idle3.png" id="2_ieuls"]
 [ext_resource type="Texture2D" uid="uid://dw1wm5ed8arij" path="res://pngs/Hobbit - attack2.png" id="3_1dhn1"]
@@ -78,6 +78,17 @@
 [ext_resource type="Texture2D" uid="uid://vjdtqdqmai2n" path="res://pngs/Hobbit - stop6.png" id="76_vqgg6"]
 [ext_resource type="Texture2D" uid="uid://bd34amaothyxy" path="res://pngs/Hobbit - stop7.png" id="77_5kxiy"]
 [ext_resource type="Texture2D" uid="uid://b10fqs282srro" path="res://pngs/Hobbit - stop8.png" id="78_eird8"]
+[ext_resource type="PackedScene" uid="uid://d0god46spntbi" path="res://control.tscn" id="79_6qr1q"]
+[ext_resource type="Texture2D" uid="uid://12qpv8tqllfi" path="res://arrow_up_light.png" id="80_braeg"]
+[ext_resource type="Texture2D" uid="uid://dwjlvv0itpgfl" path="res://arrow_up_dark.png" id="81_udk5j"]
+[ext_resource type="Texture2D" uid="uid://b0yuwhfku7oof" path="res://arrow_left_light.png" id="82_sx6qe"]
+[ext_resource type="Texture2D" uid="uid://d4aalynfp7h2w" path="res://arrow_left_dark.png" id="83_wyjr1"]
+[ext_resource type="Texture2D" uid="uid://hqhjf5wxe881" path="res://arrow_right_light.png" id="84_ecxs2"]
+[ext_resource type="Texture2D" uid="uid://3qlgrp6o437o" path="res://arrow_right_dark.png" id="85_rtsof"]
+[ext_resource type="Texture2D" uid="uid://puetowojnv02" path="res://ps5_circle_light.png" id="86_u661t"]
+[ext_resource type="Texture2D" uid="uid://bknhdu5o83asl" path="res://ps5_circle_dark.png" id="87_7pfn0"]
+[ext_resource type="Texture2D" uid="uid://dlgl1n48a7q35" path="res://ps5_circle_color_light.png" id="88_edfw6"]
+[ext_resource type="Texture2D" uid="uid://cb2vubbrg0lyg" path="res://ps5_circle_color_dark.png" id="89_slcsq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g0k4g"]
 radius = 6.0
@@ -357,6 +368,21 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eonjk"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u4w8b"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nesjy"]
+size = Vector2(40, 40)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mva74"]
+radius = 20.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ijxcr"]
+radius = 20.0
+
 [node name="hobbit" type="CharacterBody2D"]
 script = ExtResource("1_brtvi")
 
@@ -372,5 +398,56 @@ frame_progress = 0.880846
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 visible = false
+
+[node name="CONTROLLTOUCH" parent="." instance=ExtResource("79_6qr1q")]
+visible = false
+script = null
+
+[node name="up" type="TouchScreenButton" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(64, 472)
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("80_braeg")
+texture_pressed = ExtResource("81_udk5j")
+shape = SubResource("RectangleShape2D_eonjk")
+action = "jumpp"
+visibility_mode = 1
+
+[node name="left" type="TouchScreenButton" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(40, 496)
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("82_sx6qe")
+texture_pressed = ExtResource("83_wyjr1")
+shape = SubResource("RectangleShape2D_u4w8b")
+
+[node name="right" type="TouchScreenButton" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(88, 496)
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("84_ecxs2")
+texture_pressed = ExtResource("85_rtsof")
+shape = SubResource("RectangleShape2D_nesjy")
+
+[node name="recolectar" type="TouchScreenButton" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(136, 487)
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("86_u661t")
+texture_pressed = ExtResource("87_7pfn0")
+shape = SubResource("CircleShape2D_mva74")
+
+[node name="arrojar" type="TouchScreenButton" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(176, 487)
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("88_edfw6")
+texture_pressed = ExtResource("89_slcsq")
+shape = SubResource("CircleShape2D_ijxcr")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

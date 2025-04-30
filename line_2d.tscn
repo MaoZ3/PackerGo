@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b24hrvhqyjvnb"]
+
+[ext_resource type="Script" uid="uid://ftrjmw5fq12" path="res://line_2d.gd" id="1_754m7"]
+
+[sub_resource type="Curve" id="Curve_h2p4l"]
+
+[node name="Line2D" type="Line2D"]
+width_curve = SubResource("Curve_h2p4l")
+default_color = Color(1, 0.0156863, 0.0156863, 1)
+script = ExtResource("1_754m7")

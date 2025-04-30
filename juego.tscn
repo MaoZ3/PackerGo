@@ -1,11 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://difb0xfrwf5xf"]
+[gd_scene load_steps=11 format=3 uid="uid://difb0xfrwf5xf"]
 
 [ext_resource type="PackedScene" uid="uid://btl53v6ose267" path="res://parallax_background.tscn" id="1_qj547"]
 [ext_resource type="PackedScene" uid="uid://b8ng18mytobe5" path="res://tree.tscn" id="3_01w8b"]
 [ext_resource type="PackedScene" uid="uid://dr2lbasi62wy3" path="res://BBird.tscn" id="5_kbcut"]
 [ext_resource type="PackedScene" uid="uid://db5drlejhxrf2" path="res://hobbit.tscn" id="5_skbkr"]
+[ext_resource type="PackedScene" uid="uid://d0god46spntbi" path="res://control.tscn" id="5_ykyqv"]
 [ext_resource type="PackedScene" uid="uid://c8qkavik48ung" path="res://RespawnPoint.tscn" id="6_k8yw2"]
 [ext_resource type="PackedScene" uid="uid://5jswlyu8v1ps" path="res://Fruitsok.tscn" id="6_tuqwn"]
+[ext_resource type="PackedScene" uid="uid://b24hrvhqyjvnb" path="res://line_2d.tscn" id="8_yt7kb"]
 
 [sub_resource type="GDScript" id="GDScript_rfos1"]
 script/source = "extends Node  # o extends Node2D si necesitas funcionalidad 2D
@@ -79,7 +81,7 @@ wait_time = 0.5
 visible = false
 position = Vector2(158, 453)
 
-[node name="Node2D" parent="." instance=ExtResource("3_01w8b")]
+[node name="treestilesniveles" parent="." instance=ExtResource("3_01w8b")]
 position = Vector2(-95, -218)
 
 [node name="Path2D" type="Path2D" parent="."]
@@ -90,13 +92,13 @@ position = Vector2(24, 87)
 rotation = -0.953041
 
 [node name="hobbit" parent="." instance=ExtResource("5_skbkr")]
-position = Vector2(49, 172)
+position = Vector2(163, 145)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(93, 55)
+[node name="Camera2D" type="Camera2D" parent="hobbit"]
 zoom = Vector2(2, 2)
 
 [node name="Control" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
@@ -117,6 +119,13 @@ offset_bottom = 23.0
 [node name="RespawPoint" parent="." instance=ExtResource("6_k8yw2")]
 position = Vector2(14, 178)
 scale = Vector2(0.412776, 0.412776)
+
+[node name="CONTROLLTOUCH" parent="." instance=ExtResource("5_ykyqv")]
+visible = false
+position = Vector2(-27, -223)
+
+[node name="Line2D" parent="." instance=ExtResource("8_yt7kb")]
+position = Vector2(4, 0)
 
 [connection signal="timeout" from="FruitTimer" to="." method="_on_fruit_timer_timeout"]
 [connection signal="input_event" from="fruits" to="." method="_on_fruits_input_event"]

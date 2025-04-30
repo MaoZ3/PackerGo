@@ -1,0 +1,71 @@
+[gd_scene load_steps=17 format=3 uid="uid://d0god46spntbi"]
+
+[ext_resource type="Texture2D" uid="uid://12qpv8tqllfi" path="res://arrow_up_light.png" id="1_l05wd"]
+[ext_resource type="Script" uid="uid://b4ww4e4quwvtw" path="res://control.gd" id="1_n3mib"]
+[ext_resource type="Texture2D" uid="uid://dwjlvv0itpgfl" path="res://arrow_up_dark.png" id="2_mgnqt"]
+[ext_resource type="Texture2D" uid="uid://b0yuwhfku7oof" path="res://arrow_left_light.png" id="3_upmwc"]
+[ext_resource type="Texture2D" uid="uid://d4aalynfp7h2w" path="res://arrow_left_dark.png" id="4_phbt4"]
+[ext_resource type="Texture2D" uid="uid://hqhjf5wxe881" path="res://arrow_right_light.png" id="5_257j5"]
+[ext_resource type="Texture2D" uid="uid://puetowojnv02" path="res://ps5_circle_light.png" id="6_fw3qt"]
+[ext_resource type="Texture2D" uid="uid://dlgl1n48a7q35" path="res://ps5_circle_color_light.png" id="7_aepv0"]
+[ext_resource type="Texture2D" uid="uid://3qlgrp6o437o" path="res://arrow_right_dark.png" id="7_qq7dd"]
+[ext_resource type="Texture2D" uid="uid://cb2vubbrg0lyg" path="res://ps5_circle_color_dark.png" id="8_1auvw"]
+[ext_resource type="Texture2D" uid="uid://bknhdu5o83asl" path="res://ps5_circle_dark.png" id="9_3o3ff"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6727o"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_102wh"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sd84i"]
+size = Vector2(40, 40)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cjsxn"]
+radius = 20.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ayi1i"]
+radius = 20.0
+
+[node name="CONTROLLTOUCH" type="Node2D"]
+script = ExtResource("1_n3mib")
+
+[node name="up" type="TouchScreenButton" parent="."]
+texture_filter = 1
+position = Vector2(64, 472)
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("1_l05wd")
+texture_pressed = ExtResource("2_mgnqt")
+shape = SubResource("RectangleShape2D_6727o")
+
+[node name="left" type="TouchScreenButton" parent="."]
+texture_filter = 1
+position = Vector2(40, 496)
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("3_upmwc")
+texture_pressed = ExtResource("4_phbt4")
+shape = SubResource("RectangleShape2D_102wh")
+
+[node name="right" type="TouchScreenButton" parent="."]
+texture_filter = 1
+position = Vector2(88, 496)
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("5_257j5")
+texture_pressed = ExtResource("7_qq7dd")
+shape = SubResource("RectangleShape2D_sd84i")
+
+[node name="recolectar" type="TouchScreenButton" parent="."]
+texture_filter = 1
+position = Vector2(136, 487)
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("6_fw3qt")
+texture_pressed = ExtResource("9_3o3ff")
+shape = SubResource("CircleShape2D_cjsxn")
+
+[node name="arrojar" type="TouchScreenButton" parent="."]
+texture_filter = 1
+position = Vector2(176, 487)
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("7_aepv0")
+texture_pressed = ExtResource("8_1auvw")
+shape = SubResource("CircleShape2D_ayi1i")

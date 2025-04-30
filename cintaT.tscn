@@ -1,7 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://jafmbw1tgilr"]
+[gd_scene load_steps=9 format=3 uid="uid://jafmbw1tgilr"]
 
-[ext_resource type="Script" path="res://cintaT.gd" id="1_tvrmg"]
-[ext_resource type="Texture2D" uid="uid://d4dwyn51de5yq" path="res://cintaT.png" id="1_x8lew"]
+[ext_resource type="Script" uid="uid://br253j5qwhb02" path="res://cintaT.gd" id="1_tvrmg"]
+
+[sub_resource type="Resource" id="Resource_dr1w2"]
+metadata/__load_path__ = "res://cintaT.png"
+
+[sub_resource type="Resource" id="Resource_ged71"]
+metadata/__load_path__ = "res://cintaT.png"
+
+[sub_resource type="Resource" id="Resource_cfi7j"]
+metadata/__load_path__ = "res://cintaT.png"
+
+[sub_resource type="Resource" id="Resource_hmh0v"]
+metadata/__load_path__ = "res://cintaT.png"
+
+[sub_resource type="Resource" id="Resource_0x7ph"]
+metadata/__load_path__ = "res://cintaT.png"
+
+[sub_resource type="Resource" id="Resource_l3u34"]
+metadata/__load_path__ = "res://cintaT.png"
+
+[sub_resource type="Resource" id="Resource_od4am"]
+metadata/__load_path__ = "res://cintaT.png"
 
 [node name="cintaT" type="Node2D"]
 script = ExtResource("1_tvrmg")
@@ -10,40 +30,40 @@ script = ExtResource("1_tvrmg")
 texture_filter = 1
 position = Vector2(51, 690)
 scale = Vector2(1.40278, 1.33851)
-texture = ExtResource("1_x8lew")
+texture = SubResource("Resource_dr1w2")
 
 [node name="CintaT2" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(443, 690)
 scale = Vector2(1.40278, 1.33851)
-texture = ExtResource("1_x8lew")
+texture = SubResource("Resource_ged71")
 
 [node name="CintaT3" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(149, 690)
 scale = Vector2(1.40278, 1.33851)
-texture = ExtResource("1_x8lew")
+texture = SubResource("Resource_cfi7j")
 
 [node name="CintaT4" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(247, 690)
 scale = Vector2(1.40278, 1.33851)
-texture = ExtResource("1_x8lew")
+texture = SubResource("Resource_hmh0v")
 
 [node name="CintaT5" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(345, 690)
 scale = Vector2(1.40278, 1.33851)
-texture = ExtResource("1_x8lew")
+texture = SubResource("Resource_0x7ph")
 
 [node name="CintaT6" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(541, 690)
 scale = Vector2(1.40278, 1.33851)
-texture = ExtResource("1_x8lew")
+texture = SubResource("Resource_l3u34")
 
 [node name="CintaT7" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(639, 690)
 scale = Vector2(1.40278, 1.33851)
-texture = ExtResource("1_x8lew")
+texture = SubResource("Resource_od4am")
