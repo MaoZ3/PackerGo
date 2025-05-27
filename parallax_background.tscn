@@ -15,12 +15,12 @@ func _process(delta: float) -> void:
 	foreach_parallax_layer(base_speed * delta)
 
 # Función para aplicar el movimiento a todas las capas con velocidades distintas
-func foreach_parallax_layer(base_speed: Vector2):
-	for layer in get_children():
-		if layer is ParallaxLayer:
+func foreach_parallax_layer(speed: Vector2):
+	for parallax_layer in get_children():
+		if parallax_layer is ParallaxLayer:
 			# Aplicar una velocidad basada en el motion_scale de cada capa
-			var layer_speed = base_speed * layer.motion_scale
-			layer.motion_offset += layer_speed
+			var layer_speed = speed * parallax_layer.motion_scale
+			parallax_layer.motion_offset += layer_speed
 
 
 
